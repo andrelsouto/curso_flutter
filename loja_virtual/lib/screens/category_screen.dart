@@ -19,7 +19,6 @@ class CategoryScreen extends StatelessWidget {
           centerTitle: true,
           bottom: TabBar(
             indicatorColor: Colors.white,
-            physics: ,
             tabs: [
               Tab(icon: Icon(Icons.grid_on),),
               Tab(icon: Icon(Icons.list),)
