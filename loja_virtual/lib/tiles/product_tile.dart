@@ -23,7 +23,7 @@ class ProductTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               AspectRatio(
-                aspectRatio: 0.8,
+                aspectRatio: 0.85,
                 child: Image.network(
                     product.images[0],
                     fit: BoxFit.cover,),
