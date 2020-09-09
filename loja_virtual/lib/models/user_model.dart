@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +9,14 @@ class UserModel extends Model {
   User firebaseUser;
   Map<String, dynamic> userData = Map();
   bool isLoading = false;
+
+  static UserModel of(BuildContext context) => ScopedModel.of<UserModel>(context);
+
+  @override
+  void addListener(VoidCallback listener) {
+    super.addListener(listener);
+    _loadCurrentUser();
+  }
 
   void signUp(
       { @required Map<String, dynamic> userData,
@@ -34,16 +40,34 @@ class UserModel extends Model {
         });
   }
 
-  void signIn() async {
+  void signIn(
+      { @required String email,
+        @required String pass,
+        @required VoidCallback onSuccess,
+        @required VoidCallback onFail}) async {
     isLoading = true;
     notifyListeners();
 
-    await Future.delayed(Duration(seconds: 4));
+    final auth = await _auth.signInWithEmailAndPassword(email: email, password: pass)
+      .catchError((e){
+        onFail();
+        isLoading = false;
+        notifyListeners();
+        return null;
+    });
+    if (auth != null && auth.user != null) {
+      firebaseUser = auth.user;
+      onSuccess();
+      await _loadCurrentUser();
+    }
+
     isLoading = false;
     notifyListeners();
   }
 
-  void recoverPass() {}
+  void recoverPass(String email) {
+    _auth.sendPasswordResetEmail(email: email);
+  }
 
   Future<void> _saveUserData(Map<String, dynamic> userData) async{
     this.userData = userData;
@@ -59,6 +83,17 @@ class UserModel extends Model {
 
   bool isLoggedIn() {
     return firebaseUser != null;
+  }
+
+  Future<void> _loadCurrentUser() async {
+    if (firebaseUser == null)
+      firebaseUser = _auth.currentUser;
+    if (firebaseUser != null && userData['name'] == null) {
+      final docUser = await FirebaseFirestore.instance.collection('users').doc(firebaseUser.uid).get();
+      userData = docUser.data();
+    }
+
+    notifyListeners();
   }
 
 }
