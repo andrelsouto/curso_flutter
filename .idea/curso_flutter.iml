@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/calculadora_de_imc/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/calculadora_de_imc/build" />
+      <excludeFolder url="file://$MODULE_DIR$/chat/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/chat/build" />
+      <excludeFolder url="file://$MODULE_DIR$/contador_de_pessoas/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/contador_de_pessoas/build" />
+      <excludeFolder url="file://$MODULE_DIR$/converso_moedas/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/converso_moedas/build" />
+      <excludeFolder url="file://$MODULE_DIR$/fincancas/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/fincancas/build" />
+      <excludeFolder url="file://$MODULE_DIR$/flare_test/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/flare_test/build" />
+      <excludeFolder url="file://$MODULE_DIR$/giphy/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/giphy/build" />
+      <excludeFolder url="file://$MODULE_DIR$/lista_tarefas/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/lista_tarefas/build" />
+      <excludeFolder url="file://$MODULE_DIR$/loja_virtual/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/loja_virtual/build" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
